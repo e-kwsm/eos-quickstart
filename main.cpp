@@ -12,6 +12,7 @@
 
 int main(int argc, char *argv[])
 {
+    using namespace Qt::StringLiterals;
     QGuiApplication app(argc, argv);
 
     QTranslator translator;
@@ -39,7 +40,7 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty(QStringLiteral("packageModel"), &model);
     engine.rootContext()->setContextProperty(QStringLiteral("packageManager"), &packageManager);
-    const QUrl url(u"qrc:/eosquickstart/main.qml"_qs);
+    const QUrl url(u"qrc:/eosquickstart/main.qml"_s);
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {
         if (!obj && url == objUrl)
